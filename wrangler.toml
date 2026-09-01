@@ -1,0 +1,21 @@
+name = "web-page-watcher"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+# 注意：无需填写 account_id，执行 wrangler login 后自动使用当前登录账户。
+
+# 定时调度：每 5 分钟触发一次 scheduled()。
+# Workers 免费版支持最多 3 个 Cron Trigger，最小粒度 1 分钟。
+[triggers]
+crons = ["*/5 * * * *"]
+
+# KV 存储任务与快照。部署前执行：
+#   wrangler kv namespace create WATCHER
+# 然后把返回的 id 填到下方（请填入你自己的 id，勿复制他人值）。
+[[kv_namespaces]]
+binding = "WATCHER"
+id = ""   # ← 部署前替换为 `wrangler kv namespace create WATCHER` 返回的 id
+
+[vars]
+# 非敏感默认配置；敏感凭证（API Token 等）一律用
+#   wrangler secret put XXX 注入，禁止明文写入本文件。
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"

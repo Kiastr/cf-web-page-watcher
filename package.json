@@ -1,0 +1,17 @@
+{
+  "name": "cf-web-page-watcher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Workers 版网页变化监控器（定时抓取 + 关键词哨兵 + 通知推送）",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^3.99.0"
+  },
+  "dependencies": {
+    "tweetsodium": "^0.0.4"
+  }
+}
